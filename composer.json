@@ -1,0 +1,21 @@
+{
+    "name": "srlabs/eloquent-sti",
+    "description": "Implement Single Table Inheritance within the Eloquent ORM",
+    "authors": [
+        {
+            "name": "Ryan C. Durham",
+            "email": "ryan@stagerightlabs.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "illuminate/database": "4.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+          "SRLabs\\EloquentSti\\": "src/EloquentSti"
+        }
+    },
+    "minimum-stability": "stable"
+}
