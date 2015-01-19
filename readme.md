@@ -34,12 +34,12 @@ class Widget extends Illuminate\Database\Eloquent\Model {
         'processed' => 'Epiphyte\Entities\Widgets\ProcessedWidget'
         'complete' => 'Epiphyte\Entities\Widgets\CompleteWidget'
     ];
+    
+    // The rest of the child entity methods go here. 
 }
 ```
 
-You must specify the database table name and the full class name of the base model. The ```discriminatorColumn``` is the name of the database column use to specify which entity types should be used for each object in the table.  The inheritance map specifies the full class name of each of the child entity types that you want made available to the base model. 
-
-The child entities can be located anywhere you would like. 
+You must specify the database table name and the full class name of the base model. The ```discriminatorColumn``` is the name of the column used to distinguish your entity types.  The inheritance map specifies the full class name of each of the child entity types that you want made available to the base model. The child entities can be put in any convenient location.
 
 Next you need to create each of your child entity classes. You can optionally provide an implementation of the ```newQuery()``` funtion - see below.  Here is a hypothetical example: 
 
