@@ -1,4 +1,4 @@
-<?php namespace Srlabs\EloquentSti;
+<?php namespace SRLabs\EloquentSTI;
 
 use Illuminate\Support\ServiceProvider;
 
