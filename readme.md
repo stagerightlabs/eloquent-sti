@@ -18,6 +18,10 @@ To start, add this trait to the model you wish to convert to STI.  You also need
 // app/Epiphyte/Widget.php
 class Widget extends Illuminate\Database\Eloquent\Model {
 
+    /*****************************************************************************
+     *  Eloquent Configuration
+     *****************************************************************************/
+    
     protected $guarded = ['id'];
     protected $fillable = ['name', 'description', 'status'];
      
@@ -35,7 +39,7 @@ class Widget extends Illuminate\Database\Eloquent\Model {
         'complete' => 'Epiphyte\Entities\Widgets\CompleteWidget'
     ];
     
-    // The rest of the child entity methods go here. 
+    // ...
 }
 ```
 
@@ -59,6 +63,7 @@ class NewWidget extends Epiphyte\Widget {
 		return parent::newQuery( $excludeDeleted )->where( 'status', '=', 'new' );
 	}
 
+    // Remaining child entity methods go here...
 }
 ```
 
