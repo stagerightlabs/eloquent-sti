@@ -67,7 +67,7 @@ trait SingleTableInheritanceTrait
         $m = $this->mapData((array)$attributes)->newInstance(array(), true);
 
         // Hydrate the new instance with the table data
-        $m->setRawAttributes((array)$attributes);
+        $m->setRawAttributes((array)$attributes, true);
 
         // Return the assembled object
         return $m;
