@@ -1,18 +1,24 @@
 # Eloquent Single Table Inheritance
 
-Extend Eloquent Models to provide single table inheritance. 
+This package provides an easy way to extend Eloquent model objects to provide support for single table inheritance.  Inspired by an [article](http://snooptank.com/single-table-inheritance-with-eloquent-laravel-4/) written by Pallav Kaushish. 
 
 ### Installation
+This package should be installed via composer:
 
-This package can be installed via composer: 
-
-```shell
+```bash
 $ composer require srlabs/eloquent-sti
 ```
 
 ### Usage
 
-To start, add this trait to the model you wish to convert to STI.  You also need to specify a few extra parameters.  Here is an imaginary Widget model as an example: 
+In your Model, add the ```SingleTableInheritanceTrait``` trait and then specify these configuration values:
+
+- ```table```: The name of the database table assigned to the base model
+- ```morphClass```: The full class name of the base Eloquent Object
+- ```discriminatorColumn```: The column in the database table used to distinguish STI entity types
+- ```inheritanceMap```: An array mapping discriminator column values to corresponding entity classes
+
+Here is an imaginary Widget model as an example: 
 
 ```php
 // app/Epiphyte/Widget.php
@@ -43,30 +49,33 @@ class Widget extends Illuminate\Database\Eloquent\Model {
 }
 ```
 
-You must specify the database table name and the full class name of the base model. The ```discriminatorColumn``` is the name of the column used to distinguish your entity types.  The inheritance map specifies the full class name of each of the child entity types that you want made available to the base model. The child entities can be put in any convenient location.
+Next you need to create each of your child entity classes. I often keep them in an ```Entities``` folder, but any namespaced location will work.  
 
-Next you need to create each of your child entity classes. You can optionally provide an implementation of the ```newQuery()``` funtion - see below.  Here is a hypothetical example: 
+Here is a hypothetical example: 
 
 ```php
 // app/Epiphyte/Entities/Widgets/NewWidget.php
 class NewWidget extends Epiphyte\Widget {
 
-	/**
-	 * Limit the query scope if we define a query against the base table using this class.
-	 *
-	 * @param bool $excludeDeleted
-	 *
-	 * @return $this
-	 */
-	public function newQuery( $excludeDeleted = true )
-	{
-		return parent::newQuery( $excludeDeleted )->where( 'status', '=', 'new' );
-	}
+    /**
+     * Limit the query scope if we define a query against the base table using this class.
+     *
+     * @param bool $excludeDeleted
+     *
+     * @return $this
+     */
+    public function newQuery($excludeDeleted = true)
+    {
+        return parent::newQuery($excludeDeleted)->where('status', '=', 'new');
+    }
 
     // Remaining child entity methods go here...
 }
 ```
 
-Providing the ```newQuery()``` method in your child entity will allow you to use the Entity as a traditional Eloquent accessor that only returns its own type of entities.  In this case, ```NewWidget::all()``` would return all of the widgets flagged as 'new' in the database.  
+Whenever Eloquent wants to return an instance of the base model it will use the value of the discriminator column to determine the appropriate entity type and return an instance of that class instead.  This holds true for all Eloquent actions but it will not work on direct database (i.e. ```DB::table()```) calls.  
 
-Any methods or relationships that are only needed for this type of child entity can be specified in the ```NewWidget``` class.  Any methods or relationships specified in the parent class are still available to the child entity. 
+Providing the ```newQuery()``` method in the child class will allow you to use the Entity as a traditional Eloquent accessor that only returns entities of its own type.  In this case, ```NewWidget::all();``` would return all of the widgets flagged as 'new' in the database.  
+
+Any questions about this package should be posted on the [package website](http://stagerightlabs.com/projects/eloquent-sti).
+ 
