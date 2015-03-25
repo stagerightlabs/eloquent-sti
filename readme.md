@@ -9,6 +9,11 @@ This package should be installed via composer:
 $ composer require srlabs/eloquent-sti
 ```
 
+| Laravel Version  | Sentinel Version  | Packagist Branch |
+|---|---|---|
+| 4.2.*  | 1.*  | ```"srlabs/eloquent-sti": "~1"``` |
+| 5.0.*  | 2.*  | ```"srlabs/eloquent-sti": "~2"```   |
+
 ### Usage
 
 In your Model, add the ```SingleTableInheritanceTrait``` trait and then specify these configuration values:
