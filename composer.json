@@ -1,6 +1,8 @@
 {
     "name": "srlabs/eloquent-sti",
     "description": "Implement Single Table Inheritance within the Eloquent ORM",
+    "keywords": ["laravel", "eloquent", "single-table-inheritance", "trait"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Ryan C. Durham",
