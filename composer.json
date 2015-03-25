@@ -17,5 +17,5 @@
           "SRLabs\\EloquentSTI\\": "src/EloquentSTI"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
