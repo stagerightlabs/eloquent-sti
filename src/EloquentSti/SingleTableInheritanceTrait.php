@@ -61,7 +61,7 @@ trait SingleTableInheritanceTrait
      * @param  array $attributes
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function newFromBuilder($attributes = array())
+    public function newFromBuilder($attributes = array(), $connection = NULL)
     {
         // Create a new instance of the Entity Type Class
         $m = $this->mapData((array)$attributes)->newInstance(array(), true);
