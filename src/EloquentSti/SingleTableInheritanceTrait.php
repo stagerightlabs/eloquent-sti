@@ -126,6 +126,9 @@ trait SingleTableInheritanceTrait
             return false;
         }
 
+        // Fill the discriminator column with the correct value for the class.
+        $this[$this->discriminatorColumn] = array_search(get_class($this), $this->inheritanceMap);
+
         // If the model already exists in the database we can just update
         // our record that is already in this database using the current
         // IDs in this "where" clause to only update this model.
