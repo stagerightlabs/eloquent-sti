@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-          "SRLabs\\EloquentSTI\\": "src/EloquentSTI"
+          "SRLabs\\EloquentSTI\\": "src/"
         }
     },
     "minimum-stability": "dev"
