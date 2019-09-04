@@ -1,6 +1,6 @@
 # Eloquent Single Table Inheritance
 
-This package provides an easy way to extend Eloquent model objects to provide support for single table inheritance.  Inspired by an [article](http://snooptank.com/single-table-inheritance-with-eloquent-laravel-4/) written by Pallav Kaushish. 
+This package provides an easy way to extend Eloquent model objects to provide support for single table inheritance.  Inspired by an [article](http://snooptank.com/single-table-inheritance-with-eloquent-laravel-4/) written by Pallav Kaushish.
 
 ### Installation
 This package should be installed via composer:
@@ -11,8 +11,8 @@ $ composer require srlabs/eloquent-sti
 
 | Laravel Version  | Sentinel Version  | Packagist Branch |
 |---|---|---|
-| 4.2.*  | 1.*  | ```"srlabs/eloquent-sti": "~1"``` |
-| 5.0.*  | 2.*  | ```"srlabs/eloquent-sti": "~2"```   |
+| 5.*  | 2.*  | ```"srlabs/eloquent-sti": "~2"```   |
+| 6.*  | 3.*  | ```"srlabs/eloquent-sti": "~2"```   |
 
 ### Usage
 
@@ -23,7 +23,7 @@ In your Model, add the ```SingleTableInheritanceTrait``` trait and then specify 
 - ```discriminatorColumn```: The column in the database table used to distinguish STI entity types
 - ```inheritanceMap```: An array mapping discriminator column values to corresponding entity classes
 
-Here is an imaginary Widget model as an example: 
+Here is an imaginary Widget model as an example:
 
 ```php
 // app/Epiphyte/Widget.php
@@ -32,10 +32,10 @@ class Widget extends Illuminate\Database\Eloquent\Model {
     /*****************************************************************************
      *  Eloquent Configuration
      *****************************************************************************/
-    
+
     protected $guarded = ['id'];
     protected $fillable = ['name', 'description', 'status'];
-     
+
     /*****************************************************************************
      * Single Table Inheritance Configuration
      *****************************************************************************/
@@ -49,14 +49,14 @@ class Widget extends Illuminate\Database\Eloquent\Model {
         'processed' => 'Epiphyte\Entities\Widgets\ProcessedWidget'
         'complete' => 'Epiphyte\Entities\Widgets\CompleteWidget'
     ];
-    
+
     // ...
 }
 ```
 
-Next you need to create each of your child entity classes. I often keep them in an ```Entities``` folder, but any namespaced location will work.  
+Next you need to create each of your child entity classes. I often keep them in an ```Entities``` folder, but any namespaced location will work.
 
-Here is a hypothetical example: 
+Here is a hypothetical example:
 
 ```php
 // app/Epiphyte/Entities/Widgets/NewWidget.php
@@ -78,9 +78,8 @@ class NewWidget extends Epiphyte\Widget {
 }
 ```
 
-Whenever Eloquent wants to return an instance of the base model it will use the value of the discriminator column to determine the appropriate entity type and return an instance of that class instead.  This holds true for all Eloquent actions but it will not work on direct database (i.e. ```DB::table()```) calls.  
+Whenever Eloquent wants to return an instance of the base model it will use the value of the discriminator column to determine the appropriate entity type and return an instance of that class instead.  This holds true for all Eloquent actions but it will not work on direct database (i.e. ```DB::table()```) calls.
 
-Providing the ```newQuery()``` method in the child class will allow you to use the Entity as a traditional Eloquent accessor that only returns entities of its own type.  In this case, ```NewWidget::all();``` would return all of the widgets flagged as 'new' in the database.  
+Providing the ```newQuery()``` method in the child class will allow you to use the Entity as a traditional Eloquent accessor that only returns entities of its own type.  In this case, ```NewWidget::all();``` would return all of the widgets flagged as 'new' in the database.
 
 Any questions about this package should be posted on the [package website](http://stagerightlabs.com/projects/eloquent-sti).
- 
