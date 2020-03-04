@@ -9,10 +9,11 @@ This package should be installed via composer:
 $ composer require srlabs/eloquent-sti
 ```
 
-| Laravel Version  | Sentinel Version  | Packagist Branch |
-|---|---|---|
-| 5.*  | 2.*  | ```"srlabs/eloquent-sti": "~2"```   |
-| 6.*  | 3.*  | ```"srlabs/eloquent-sti": "~2"```   |
+| Laravel Version  | Sentinel Version  |
+|---|---|
+| 5.*  | 2.*  |
+| 6.*  | 3.*  |
+| 7.*  | 4.*  |
 
 ### Usage
 
