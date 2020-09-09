@@ -11,9 +11,9 @@ $ composer require srlabs/eloquent-sti
 
 | Laravel Version  | Sentinel Version  |
 |---|---|
-| 5.*  | 2.*  |
 | 6.*  | 3.*  |
 | 7.*  | 4.*  |
+| 7.*  | 5.*  |
 
 ### Usage
 
