@@ -1,7 +1,12 @@
 {
     "name": "srlabs/eloquent-sti",
     "description": "Implement Single Table Inheritance within the Eloquent ORM",
-    "keywords": ["laravel", "eloquent", "single-table-inheritance", "trait"],
+    "keywords": [
+        "laravel",
+        "eloquent",
+        "single-table-inheritance",
+        "trait"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -10,13 +15,13 @@
         }
     ],
     "require": {
-        "php": "^7.3",
-        "illuminate/support": "^8.0",
-        "illuminate/database": "^8.0"
+        "php": "^8.0",
+        "illuminate/support": "^9.0",
+        "illuminate/database": "^9.0"
     },
     "autoload": {
         "psr-4": {
-          "SRLabs\\EloquentSTI\\": "src/"
+            "SRLabs\\EloquentSTI\\": "src/"
         }
     },
     "minimum-stability": "dev"
