@@ -9,12 +9,6 @@ This package should be installed via composer:
 $ composer require srlabs/eloquent-sti
 ```
 
-| Laravel Version  | Sentinel Version  |
-|---|---|
-| 6.*  | 3.*  |
-| 7.*  | 4.*  |
-| 7.*  | 5.*  |
-
 ### Usage
 
 In your Model, add the ```SingleTableInheritanceTrait``` trait and then specify these configuration values:
